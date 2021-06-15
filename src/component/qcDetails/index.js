@@ -156,32 +156,32 @@ export default function QcDetails() {
                   <div className="j_row6">
                     <div className="j_col1">
                       <p className="j_p11">Aadhar front image</p>
-                      <div className="j_col2">
-                        <div className="j_dotted">
+                      <div className="j_col2 aadhar-container">
+                        
                           <img
                             src={
                               window.location.origin +
-                              "/Adhaar/Mask Group 87.svg"
+                              "/images/aadhar-front.svg"
                             }
-                            alt="call"
-                            className="proof_image"
+                            alt="aadhar front"
+                            className="proof_image aadhar-img"
                           />
-                        </div>
+                        
                       </div>
                     </div>
                     <div className="j_col1">
                       <p className="j_p11">Aadhar back image</p>
-                      <div className="j_col2">
-                        <div className="j_dotted">
+                      <div className="j_col2 aadhar-container">
+                        
                           <img
                             src={
                               window.location.origin +
-                              "/Adhaar/Mask Group 88.svg"
+                              "/images/aadhar-back.svg"
                             }
-                            alt="call"
-                            className="proof_image"
+                            alt="aadhar front"
+                            className="proof_image aadhar-img"
                           />
-                        </div>
+                        
                       </div>
                     </div>
                   </div>

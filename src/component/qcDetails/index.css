@@ -248,7 +248,6 @@ color: #876bf5 - header
     display: flex;
     justify-content: center;
     align-content: center;
-    contain: content;
   }
   
   img.proof_image {
@@ -384,4 +383,15 @@ color: #876bf5 - header
     align-items: center;
     padding: 10px;
 
+  }
+
+  .aadhar-container{
+    height: auto; 
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .aadhar-img{
+    height: 150px !important;
   }
