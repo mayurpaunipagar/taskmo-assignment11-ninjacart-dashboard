@@ -92,6 +92,60 @@ export default function QcDetails() {
                   </p>
                 </div>
               </div>
+              <div className="j_row4">
+                <div className="j_proof">
+                  {/* <p className="j_p9">Merchant aadhar number</p>
+                  <p className="j_p10">1224 5678 9900</p> */}
+                  <div className="j_row6">
+                    <div className="j_col1">
+                      {/* <p className="j_p11">Aadhar front image</p> */}
+                      <div className="j_col2 aadhar-container">
+                        
+                          <img
+                            src={
+                              window.location.origin +
+                              "/images/shop-front.svg"
+                            }
+                            alt="aadhar front"
+                            className="proof_image aadhar-img"
+                          />
+                        
+                      </div>
+                    </div>
+                    <div className="j_col1">
+                      {/* <p className="j_p11">Aadhar back image</p> */}
+                      <div className="j_col2 aadhar-container">
+                        
+                          <img
+                            src={
+                              window.location.origin +
+                              "/images/shop-left.svg"
+                            }
+                            alt="aadhar front"
+                            className="proof_image aadhar-img"
+                          />
+                        
+                      </div>
+                    </div>
+                    <div className="j_col1">
+                      {/* <p className="j_p11">Aadhar back image</p> */}
+                      <div className="j_col2 aadhar-container">
+                        
+                          <img
+                            src={
+                              window.location.origin +
+                              "/images/shop-right.svg"
+                            }
+                            alt="aadhar front"
+                            className="proof_image aadhar-img"
+                          />
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
               {/* <div className="j_row4">
                 <div className="j_proof">
                   <p className="j_p9">Proof of business image</p>
