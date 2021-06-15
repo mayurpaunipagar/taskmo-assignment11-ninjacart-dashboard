@@ -76,7 +76,7 @@ export default function QcDetails() {
               <div className="j_row4">
                 <div className="j_row5">
                   <div className="j_box3">
-                    <p className="j_p9">Sategory</p>
+                    <p className="j_p9">Category</p>
                     <p className="j_p15">Provision store/others</p>
                   </div>
                   <div className="j_boxes">
@@ -92,7 +92,7 @@ export default function QcDetails() {
                   </p>
                 </div>
               </div>
-              <div className="j_row4">
+              {/* <div className="j_row4">
                 <div className="j_proof">
                   <p className="j_p9">Proof of business image</p>
                   <p className="j_p10">Provision store/others</p>
@@ -127,7 +127,7 @@ export default function QcDetails() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div className="j_row4">
                 <div className="j_row5">
                   <div className="j_box3">
@@ -148,8 +148,8 @@ export default function QcDetails() {
               </div>
               <div className="j_row4">
                 <div className="j_proof">
-                  <p className="j_p9">Merchant aadhar number</p>
-                  <p className="j_p10">1224 5678 9900</p>
+                  {/* <p className="j_p9">Merchant aadhar number</p>
+                  <p className="j_p10">1224 5678 9900</p> */}
                   <div className="j_row6">
                     <div className="j_col1">
                       <p className="j_p11">Aadhar front image</p>
@@ -184,7 +184,7 @@ export default function QcDetails() {
                   </div>
                 </div>
               </div>
-              <div className="j_row4">
+              {/* <div className="j_row4">
                 <div className="j_row5">
                   <div className="j_box3">
                     <p className="j_p9">MID number</p>
@@ -201,7 +201,7 @@ export default function QcDetails() {
                     Verify the MID,is this same as in the profile screen
                   </p>
                 </div>
-              </div>
+              </div> */}
               <div className="j_row4">
                 <div className="j_proof">
                   <p className="j_p9">Verification Screeshot</p>
@@ -209,14 +209,15 @@ export default function QcDetails() {
                   <div className="j_row8">
                     <div className="j_col1">
                       <div className="j_col2">
-                        <div className="j_dotted">
+                        <div className="j_dotted my-shop-image">
                           <img
                             src={
                               window.location.origin +
-                              "/Adhaar/Mask Group 87.svg"
+                              "/images/profile-verification.svg"
                             }
                             alt="call"
                             className="proof_image"
+                            
                           />
                         </div>
                       </div>
