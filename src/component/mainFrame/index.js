@@ -8,7 +8,7 @@ export default function MainFrame({ blur, setBlur,setImagePreview }) {
         <div className="sidebar my-sidebar" id="sidebar">
           <SideBarContent />
         </div>
-        <div class="page-wrapper my-wrapper">
+        <div class={`page-wrapper my-wrapper ${blur?"myBlur":""}`}>
           
           <QcDetails blur={blur} setBlur={setBlur} setImagePreview={setImagePreview} />
         </div>

@@ -1,11 +1,62 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import "./index.css";
 import { apexOptions } from "./apexOptions";
-import { IMAGES_BASE_URL } from "../../utils";
+import { IMAGES_BASE_URL, NINJACART_LEAD_FIELDS_URL } from "../../utils";
 
-export default function QcDetails({ blur, setBlur,setImagePreview }) {
-  const [api,setApi]=useState({})
+export default function QcDetails({ blur, setBlur, setImagePreview }) {
+  const [api, setApi] = useState({});
+  const [qcScore, setQcScore] = useState(0);
+  const [totalCount, setTotalCount] = useState(0);
+  const [yesBtnObj, setYesBtnObj] = useState({
+    shopName: "none",
+    category: "none",
+    aadhar: "none",
+  }); //yes no none
+
+  const updateScore = (e) => {
+    const label = e.target.dataset.label;
+    const value = e.target.innerText;
+    if (value === "YES") {
+      yesBtnObj[label] = "yes";
+      setYesBtnObj({ ...yesBtnObj });
+      // console.log("I am in Yes");
+      // console.log(yesBtnObj);
+      let count = 0;
+      for (const key in yesBtnObj) {
+        if (yesBtnObj[key] === "yes") {
+          count = count + 1;
+        }
+      }
+
+      const score = (count / totalCount) * 100;
+      console.log(score);
+      setQcScore(Math.trunc(score));
+      apexOptions.series = [Math.trunc(score)];
+    } else if (value === "NO") {
+      yesBtnObj[label] = "no";
+      setYesBtnObj({ ...yesBtnObj });
+      let count = 0;
+      for (const key in yesBtnObj) {
+        if (yesBtnObj[key] === "yes") {
+          count = count + 1;
+        }
+      }
+
+      const score = (count / totalCount) * 100;
+      console.log(score);
+      setQcScore(Math.trunc(score));
+      // console.log("I am in No");
+      // console.log(yesBtnObj);
+      apexOptions.series = [Math.trunc(score)];
+    }
+  };
+
+  useEffect(() => {
+    setTotalCount(Object.keys(yesBtnObj).length);
+    // getLeadDetails();
+  }, []);
+
   return (
     <div className="jio">
       <div className="jio_page">
@@ -66,8 +117,35 @@ export default function QcDetails({ blur, setBlur,setImagePreview }) {
                     <p className="j_p15">Shop name</p>
                   </div>
                   <div className="j_boxes">
-                    <p className="j_yes">yes</p>
-                    <p className="j_yes">no</p>
+                    <p
+                      style={{
+                        pointerEvents: `${
+                          yesBtnObj.shopName === "yes" ? "none" : "auto"
+                        }`,
+                      }}
+                      className={`j_yes ${
+                        yesBtnObj.shopName === "yes" ? "activeBtn" : ""
+                      }`}
+                      data-label="shopName"
+                      onClick={updateScore}
+                      value={`YES`}
+                    >
+                      YES
+                    </p>
+                    <p
+                      style={{
+                        pointerEvents: `${
+                          yesBtnObj.shopName === "no" ? "none" : "auto"
+                        }`,
+                      }}
+                      className={`j_yes ${
+                        yesBtnObj.shopName === "no" ? "activeBtn" : ""
+                      }`}
+                      onClick={updateScore}
+                      data-label="shopName"
+                    >
+                      NO
+                    </p>
                   </div>
                 </div>
                 <div className="row_note1">
@@ -85,8 +163,36 @@ export default function QcDetails({ blur, setBlur,setImagePreview }) {
                     <p className="j_p15">Provision store/others</p>
                   </div>
                   <div className="j_boxes">
-                    <p className="j_yes">yes</p>
-                    <p className="j_yes">no</p>
+                    <p
+                      style={{
+                        pointerEvents: `${
+                          yesBtnObj.category === "yes" ? "none" : "auto"
+                        }`,
+                      }}
+                      className={`j_yes ${
+                        yesBtnObj.category === "yes" ? "activeBtn" : ""
+                      }`}
+                      data-label="category"
+                      onClick={updateScore}
+                      value={`YES`}
+                    >
+                      YES
+                    </p>
+                    <p
+                      className="j_yes"
+                      style={{
+                        pointerEvents: `${
+                          yesBtnObj.category === "no" ? "none" : "auto"
+                        }`,
+                      }}
+                      className={`j_yes ${
+                        yesBtnObj.category === "no" ? "activeBtn" : ""
+                      }`}
+                      onClick={updateScore}
+                      data-label="category"
+                    >
+                      NO
+                    </p>
                   </div>
                 </div>
                 <div className="row_note1">
@@ -118,7 +224,8 @@ export default function QcDetails({ blur, setBlur,setImagePreview }) {
                               url: `${
                                 Object.keys(api).length > 0
                                   ? `${IMAGES_BASE_URL}/${api.shop_image_1}`
-                                  : window.location.origin + "/images/shop-front.svg"
+                                  : window.location.origin +
+                                    "/images/shop-front.svg"
                               }`,
                             });
                           }}
@@ -139,7 +246,8 @@ export default function QcDetails({ blur, setBlur,setImagePreview }) {
                               url: `${
                                 Object.keys(api).length > 0
                                   ? `${IMAGES_BASE_URL}/${api.shop_image_1}`
-                                  : window.location.origin + "/images/shop-left.svg"
+                                  : window.location.origin +
+                                    "/images/shop-left.svg"
                               }`,
                             });
                           }}
@@ -162,7 +270,8 @@ export default function QcDetails({ blur, setBlur,setImagePreview }) {
                               url: `${
                                 Object.keys(api).length > 0
                                   ? `${IMAGES_BASE_URL}/${api.shop_image_2}`
-                                  : window.location.origin + "/images/shop-right.svg"
+                                  : window.location.origin +
+                                    "/images/shop-right.svg"
                               }`,
                             });
                           }}
@@ -216,8 +325,28 @@ export default function QcDetails({ blur, setBlur,setImagePreview }) {
                     <p className="j_p10">1224 5678 9900</p>
                   </div>
                   <div className="j_boxes">
-                    <p className="j_yes">yes</p>
-                    <p className="j_yes">no</p>
+                    <p className="j_yes" style={{
+                        pointerEvents: `${
+                          yesBtnObj.aadhar === "yes" ? "none" : "auto"
+                        }`,
+                      }}
+                      className={`j_yes ${
+                        yesBtnObj.aadhar === "yes" ? "activeBtn" : ""
+                      }`}
+                      data-label="aadhar"
+                      onClick={updateScore}
+                      value={`YES`}>YES</p>
+                    <p className="j_yes" className="j_yes"
+                      style={{
+                        pointerEvents: `${
+                          yesBtnObj.aadhar === "no" ? "none" : "auto"
+                        }`,
+                      }}
+                      className={`j_yes ${
+                        yesBtnObj.aadhar === "no" ? "activeBtn" : ""
+                      }`}
+                      onClick={updateScore}
+                      data-label="aadhar">NO</p>
                   </div>
                 </div>
                 <div className="row_note1">
@@ -248,7 +377,8 @@ export default function QcDetails({ blur, setBlur,setImagePreview }) {
                               url: `${
                                 Object.keys(api).length > 0
                                   ? `${IMAGES_BASE_URL}/${api.shop_image_1}`
-                                  : window.location.origin + "/images/aadhar-front.svg"
+                                  : window.location.origin +
+                                    "/images/aadhar-front.svg"
                               }`,
                             });
                           }}
@@ -271,7 +401,8 @@ export default function QcDetails({ blur, setBlur,setImagePreview }) {
                               url: `${
                                 Object.keys(api).length > 0
                                   ? `${IMAGES_BASE_URL}/${api.shop_image_1}`
-                                  : window.location.origin + "/images/aadhar-back.svg"
+                                  : window.location.origin +
+                                    "/images/aadhar-back.svg"
                               }`,
                             });
                           }}
@@ -321,7 +452,8 @@ export default function QcDetails({ blur, setBlur,setImagePreview }) {
                                 url: `${
                                   Object.keys(api).length > 0
                                     ? `${IMAGES_BASE_URL}/${api.shop_image_1}`
-                                    : window.location.origin + "/images/profile-verification.svg"
+                                    : window.location.origin +
+                                      "/images/profile-verification.svg"
                                 }`,
                               });
                             }}
@@ -358,7 +490,7 @@ export default function QcDetails({ blur, setBlur,setImagePreview }) {
                 </div>
               </div>
               <div className="jio_score">
-                <p className="j_p6">score: </p>
+                {/* <p className="j_p6">score: </p> */}
                 <ReactApexChart
                   options={apexOptions}
                   series={apexOptions.series}

@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import QcCheckDone from "./component/qcCheckDone";
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [blur, setBlur] = useState(false);
+  const [blur, setBlur] = useState(true);
   const [imagePreview, setImagePreview] = useState({
     status: false,
     url: "",
@@ -29,7 +29,7 @@ function App() {
                   />
                 ) : null}
                 <div
-                  className={blur || imagePreview.status ? "disableClick " : ""}
+                  className={blur || imagePreview.status ? "disableClick" : ""}
                 >
                   <MainFrame
                     blur={blur}

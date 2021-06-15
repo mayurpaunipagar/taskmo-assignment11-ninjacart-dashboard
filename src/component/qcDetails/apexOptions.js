@@ -1,5 +1,6 @@
 const apexOptions = {
-  series: [70],
+  series: [0],
+  colors:["limegreen"],
   chart: {
     height: 350,
     type: "radialBar",
@@ -7,7 +8,7 @@ const apexOptions = {
   plotOptions: {
     radialBar: {
       hollow: {
-        size: "70%",
+        size: "60%",
       },
     },
   },
