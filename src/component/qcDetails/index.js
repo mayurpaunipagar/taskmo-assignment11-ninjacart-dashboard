@@ -3,14 +3,17 @@ import ReactApexChart from "react-apexcharts";
 import "./index.css";
 import { apexOptions } from "./apexOptions";
 
-export default function QcDetails() {
+export default function QcDetails({ blur, setBlur }) {
   return (
     <div className="jio">
       <div className="jio_page">
         <div className="jio_row1">
           <div className="j_row1">Ninja-Cart </div>
           <div className="j_row2 j-row-back-btn">
-            <img src={window.location.origin+"/images/back.svg"} alt="back button"/>
+            <img
+              src={window.location.origin + "/images/back.svg"}
+              alt="back button"
+            />
             <div className="j-back-text">Back</div>
             {/* <p className="jio_p1">Back</p> */}
           </div>
@@ -100,52 +103,44 @@ export default function QcDetails() {
                     <div className="j_col1">
                       {/* <p className="j_p11">Aadhar front image</p> */}
                       <div className="j_col2 aadhar-container">
-                        
-                          <img
-                            src={
-                              window.location.origin +
-                              "/images/shop-front.svg"
-                            }
-                            alt="aadhar front"
-                            className="proof_image aadhar-img"
-                          />
-                        
+                        <img
+                          src={
+                            window.location.origin + "/images/shop-front.svg"
+                          }
+                          alt="aadhar front"
+                          className="proof_image aadhar-img"
+                          onClick={() => {
+                            setBlur(true);
+                          }}
+                        />
                       </div>
                     </div>
                     <div className="j_col1">
                       {/* <p className="j_p11">Aadhar back image</p> */}
                       <div className="j_col2 aadhar-container">
-                        
-                          <img
-                            src={
-                              window.location.origin +
-                              "/images/shop-left.svg"
-                            }
-                            alt="aadhar front"
-                            className="proof_image aadhar-img"
-                          />
-                        
+                        <img
+                          src={window.location.origin + "/images/shop-left.svg"}
+                          alt="aadhar front"
+                          className="proof_image aadhar-img"
+                        />
                       </div>
                     </div>
                     <div className="j_col1">
                       {/* <p className="j_p11">Aadhar back image</p> */}
                       <div className="j_col2 aadhar-container">
-                        
-                          <img
-                            src={
-                              window.location.origin +
-                              "/images/shop-right.svg"
-                            }
-                            alt="aadhar front"
-                            className="proof_image aadhar-img"
-                          />
-                        
+                        <img
+                          src={
+                            window.location.origin + "/images/shop-right.svg"
+                          }
+                          alt="aadhar front"
+                          className="proof_image aadhar-img"
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              
+
               {/* <div className="j_row4">
                 <div className="j_proof">
                   <p className="j_p9">Proof of business image</p>
@@ -208,31 +203,25 @@ export default function QcDetails() {
                     <div className="j_col1">
                       <p className="j_p11">Aadhar front image</p>
                       <div className="j_col2 aadhar-container">
-                        
-                          <img
-                            src={
-                              window.location.origin +
-                              "/images/aadhar-front.svg"
-                            }
-                            alt="aadhar front"
-                            className="proof_image aadhar-img"
-                          />
-                        
+                        <img
+                          src={
+                            window.location.origin + "/images/aadhar-front.svg"
+                          }
+                          alt="aadhar front"
+                          className="proof_image aadhar-img"
+                        />
                       </div>
                     </div>
                     <div className="j_col1">
                       <p className="j_p11">Aadhar back image</p>
                       <div className="j_col2 aadhar-container">
-                        
-                          <img
-                            src={
-                              window.location.origin +
-                              "/images/aadhar-back.svg"
-                            }
-                            alt="aadhar front"
-                            className="proof_image aadhar-img"
-                          />
-                        
+                        <img
+                          src={
+                            window.location.origin + "/images/aadhar-back.svg"
+                          }
+                          alt="aadhar front"
+                          className="proof_image aadhar-img"
+                        />
                       </div>
                     </div>
                   </div>
@@ -271,7 +260,6 @@ export default function QcDetails() {
                             }
                             alt="call"
                             className="proof_image"
-                            
                           />
                         </div>
                       </div>
@@ -348,4 +336,3 @@ export default function QcDetails() {
     </div>
   );
 }
-
