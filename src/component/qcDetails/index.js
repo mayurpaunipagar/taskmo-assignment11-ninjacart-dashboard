@@ -2,7 +2,14 @@ import React, { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import "./index.css";
 import { apexOptions } from "./apexOptions";
-import { IMAGES_BASE_URL, NINJACART_LEAD_FIELDS_URL } from "../../utils";
+import {
+  IMAGES_BASE_URL,
+  NINJACART_LEAD_FIELDS_URL,
+  NINJACART_REJECT_URL,
+  NINJACART_REDO_URL,
+  NINJACART_APPROVE_URL,
+  NINJACART_QC_REMARKS_URL
+} from "../../utils";
 
 export default function QcDetails({
   blur,
@@ -10,8 +17,9 @@ export default function QcDetails({
   setImagePreview,
   setQcDoneMessage,
 }) {
+  const [remarkApi,setRemarkApi]=useState([]);
   const [comment, setComment] = useState("");
-  const [leadId, setLeadId] = useState(31);
+  const [leadId, setLeadId] = useState(60);
   const [api, setApi] = useState({});
   const [fakeOnBoarding, setFakeOnBoarding] = useState(false);
   const [qcScore, setQcScore] = useState(0);
@@ -61,20 +69,123 @@ export default function QcDetails({
   };
 
   const approveFunc = () => {
+    fetch(NINJACART_APPROVE_URL, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        lead_id: leadId,
+        qc_admin_id: "1",
+      }),
+    })
+      .then((r) => r.json())
+      .then((r) => {
+        console.log("#Approve", r);
+        setBlur(true);
+        setQcDoneMessage("Approved");
+      })
+      .catch((e) => {
+        console.log("Error: While Approve ", e);
+        setBlur(true);
+        setQcDoneMessage("Network Error");
+      });
     setBlur(true);
     setQcDoneMessage("Approved");
   };
   const rejectFunc = () => {
-    setBlur(true);
-    setQcDoneMessage("Rejected");
+    fetch(NINJACART_REJECT_URL, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        lead_id: leadId,
+        qc_admin_id: "1",
+        qc_remark: comment,
+        is_fake: `${fakeOnBoarding ? "1" : "0"}`,
+      }),
+    })
+      .then((r) => r.json())
+      .then((r) => {
+        console.log("#Reject", r);
+        setQcDoneMessage("Rejected");
+        setBlur(true);
+      })
+      .catch((e) => {
+        console.log("Error: While Reject ", e);
+        setQcDoneMessage("Network Error");
+      });
   };
   const redoFunc = () => {
-    setBlur(true);
-    setQcDoneMessage("Redo");
+    fetch(NINJACART_REDO_URL, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        lead_id: leadId,
+        qc_admin_id: "1",
+        qc_remark: comment,
+      }),
+    })
+      .then((r) => r.json())
+      .then((r) => {
+        console.log("#Redo", r);
+        setQcDoneMessage("Redo");
+        setBlur(true);
+      })
+      .catch((e) => {
+        console.log("Error: While Redo ", e);
+      });
   };
+  const getLeadDetails = () => {
+    fetch(NINJACART_LEAD_FIELDS_URL, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        lead_id: leadId,
+      }),
+    })
+      .then((r) => r.json())
+      .then((r) => {
+        console.log("resonponse from ninjacart leads", r);
+        setApi(r.lead_details);
+        // const d = new Date(r.lead_details.created_on);
+        // const day = d.getDate();
+        // const month = d.getMonth();
+        // const year = d.getFullYear();
+        // const dateString = `${day < 10 ? "0" + day : day}/${
+        //   month < 10 ? "0" + (month + 1) : month + 1
+        // }/${year}`;
+        // setMyDate(dateString);
+        getQcRemarks(r.lead_details.merchant_number);
+      })
+      .catch((e) => console.log("error", e));
+  };
+
+  const getQcRemarks = (merchant_number) => {
+    fetch(NINJACART_QC_REMARKS_URL, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        merchant_number,
+      }),
+    })
+      .then((r) => r.json())
+      .then((r) => {
+        console.log(r);
+        setRemarkApi(r);
+      });
+  };
+
   useEffect(() => {
     setTotalCount(Object.keys(yesBtnObj).length);
-    // getLeadDetails();
+    getLeadDetails();
   }, []);
 
   return (
@@ -95,14 +206,14 @@ export default function QcDetails({
           <div className="jio_row2">
             <div className="jio_box">
               <p className="j_p1">Lead ID:</p>
-              <p className="j_p2">1256</p>
+              <p className="j_p2">{leadId}</p>
             </div>
           </div>
           <div className="jio_row3">
             <div className="j_row3">
               <div className="j_box1">
                 <p className="j_p3">Merchant contact number</p>
-                <p className="j_p4">XXXXXXXX01</p>
+                <p className="j_p4">{Object.keys(api).length>0?`XXXXXXX${api.merchant_number.substring(7,10)}`:"XXXXXXXX01"}</p>
               </div>
               <div className="j_box2 my-call-row">
                 <p className="j_p5">CALL</p>
@@ -587,13 +698,17 @@ export default function QcDetails({
                   <input
                     type="button"
                     className={`qcScoreBtn j_button ${
-                      qcScore < 100 && !fakeOnBoarding && !(comment.trim().length === 0)
+                      qcScore < 100 &&
+                      !fakeOnBoarding &&
+                      !(comment.trim().length === 0)
                         ? "activateQcScoreBtn"
                         : ""
                     }`}
                     value="Redo"
                     disabled={
-                      qcScore === 100 || comment.trim().length === 0 || fakeOnBoarding
+                      qcScore === 100 ||
+                      comment.trim().length === 0 ||
+                      fakeOnBoarding
                     }
                     onClick={redoFunc}
                   />
