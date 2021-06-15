@@ -8,7 +8,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import QcCheckDone from "./component/qcCheckDone";
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [blur, setBlur] = useState(true);
+  const [blur, setBlur] = useState(false);
+  const [qcDoneMessage,setQcDoneMessage]=useState("");
   const [imagePreview, setImagePreview] = useState({
     status: false,
     url: "",
@@ -21,7 +22,7 @@ function App() {
           <Route path="/">
             {loggedIn ? (
               <>
-                {blur ? <QcCheckDone blur={blur} setBlur={setBlur} /> : null}
+                {blur ? <QcCheckDone blur={blur} setBlur={setBlur} message={qcDoneMessage} /> : null}
                 {imagePreview.status ? (
                   <ImagePreview
                     imagePreview={imagePreview}
@@ -35,6 +36,7 @@ function App() {
                     blur={blur}
                     setBlur={setBlur}
                     setImagePreview={setImagePreview}
+                    setQcDoneMessage={setQcDoneMessage}
                   />
                 </div>
               </>

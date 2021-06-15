@@ -10,13 +10,13 @@ export default function ImagePreview({imagePreview,setImagePreview}) {
         />
         
         <button
-          className="qcOkayBtn"
+          className="activeBtn okBtn closeBtn"
           onClick={() => {
             imagePreview.status=false;
             setImagePreview({...imagePreview});
           }}
         >
-          CLOSE
+          Close
         </button>
       </div>
     </div>

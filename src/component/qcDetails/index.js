@@ -4,8 +4,9 @@ import "./index.css";
 import { apexOptions } from "./apexOptions";
 import { IMAGES_BASE_URL, NINJACART_LEAD_FIELDS_URL } from "../../utils";
 
-export default function QcDetails({ blur, setBlur, setImagePreview }) {
+export default function QcDetails({ blur, setBlur, setImagePreview,setQcDoneMessage }) {
   const [api, setApi] = useState({});
+  const [fakeOnBoarding, setFakeOnBoarding] = useState(false);
   const [qcScore, setQcScore] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
   const [yesBtnObj, setYesBtnObj] = useState({
@@ -52,6 +53,18 @@ export default function QcDetails({ blur, setBlur, setImagePreview }) {
     }
   };
 
+  const approveFunc=()=>{
+    setBlur(true);
+    setQcDoneMessage("Approved");
+  }
+  const rejectFunc=()=>{
+    setBlur(true);
+    setQcDoneMessage("Rejected");
+  }
+  const redoFunc=()=>{
+    setBlur(true);
+    setQcDoneMessage("Redo");
+  }
   useEffect(() => {
     setTotalCount(Object.keys(yesBtnObj).length);
     // getLeadDetails();
@@ -325,7 +338,9 @@ export default function QcDetails({ blur, setBlur, setImagePreview }) {
                     <p className="j_p10">1224 5678 9900</p>
                   </div>
                   <div className="j_boxes">
-                    <p className="j_yes" style={{
+                    <p
+                      className="j_yes"
+                      style={{
                         pointerEvents: `${
                           yesBtnObj.aadhar === "yes" ? "none" : "auto"
                         }`,
@@ -335,8 +350,13 @@ export default function QcDetails({ blur, setBlur, setImagePreview }) {
                       }`}
                       data-label="aadhar"
                       onClick={updateScore}
-                      value={`YES`}>YES</p>
-                    <p className="j_yes" className="j_yes"
+                      value={`YES`}
+                    >
+                      YES
+                    </p>
+                    <p
+                      className="j_yes"
+                      className="j_yes"
                       style={{
                         pointerEvents: `${
                           yesBtnObj.aadhar === "no" ? "none" : "auto"
@@ -346,7 +366,10 @@ export default function QcDetails({ blur, setBlur, setImagePreview }) {
                         yesBtnObj.aadhar === "no" ? "activeBtn" : ""
                       }`}
                       onClick={updateScore}
-                      data-label="aadhar">NO</p>
+                      data-label="aadhar"
+                    >
+                      NO
+                    </p>
                   </div>
                 </div>
                 <div className="row_note1">
@@ -498,32 +521,48 @@ export default function QcDetails({ blur, setBlur, setImagePreview }) {
                   height={250}
                 />
 
-                <div className="j_p8" style={{ opacity: "0.3" }}>
-                  <p className="j_p7">Comment</p>
+                {qcScore === 100 ? (
+                  <></>
+                ) : (
+                  <>
+                    <div className="j_p8" style={{ opacity: "0.3" }}>
+                      <p className="j_p7">Comment</p>
 
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Cupiditate earum eius, quo libero a quod quis maiores quos
-                    beatae. Rem accusamus, ipsam architecto similique nam quas
-                    mollitia nemo suscipit explicabo.
-                  </p>
-                </div>
-                <div className="jio_check">
-                  <label className="form-check-label" for="check2">
-                    <input
-                      type="checkbox"
-                      className="form-check-input"
-                      id="check2"
-                      name="option2"
-                      value="something"
-                    />
-                    <p className="j_p16">Mark this as face onboarding</p>
-                  </label>
-                </div>
+                      <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Cupiditate earum eius, quo libero a quod quis maiores
+                        quos beatae. Rem accusamus, ipsam architecto similique
+                        nam quas mollitia nemo suscipit explicabo.
+                      </p>
+                    </div>
+                    <div className="jio_check">
+                      <label className="form-check-label" for="check2">
+                        <input
+                          type="checkbox"
+                          className="form-check-input"
+                          id="check2"
+                          name="option2"
+                          value="something"
+                        />
+                        <p className="j_p16">Mark this as face onboarding</p>
+                      </label>
+                    </div>
+                  </>
+                )}
                 <div className="j_buttons">
-                  <input type="button" className="j_button" value="Approve" />
-                  <input type="button" className="j_button" value="Reject" />
-                  <input type="button" className="j_button" value="Redo" />
+                  <input
+                    type="button"
+                    value="Approve"
+                    className={`qcScoreBtn j_button ${
+                      qcScore === 100 && !fakeOnBoarding
+                        ? "activateQcScoreBtn"
+                        : ""
+                    }`}
+                    disabled={qcScore !== 100 || fakeOnBoarding}
+                    onClick={approveFunc}
+                  />
+                  <input type="button" className="j_button" value="Reject" onClick={rejectFunc}/>
+                  <input type="button" className="j_button" value="Redo" onClick={redoFunc} />
                 </div>
               </div>
             </div>
