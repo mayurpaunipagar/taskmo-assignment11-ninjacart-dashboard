@@ -1,7 +1,7 @@
 import "./style.css";
 import SideBarContent from "../sidebarContent";
 import QcDetails from "./../qcDetails";
-export default function MainFrame({ blur, setBlur }) {
+export default function MainFrame({ blur, setBlur,setImagePreview }) {
   return (
     <>
       <div className="main-wrapper">
@@ -9,7 +9,8 @@ export default function MainFrame({ blur, setBlur }) {
           <SideBarContent />
         </div>
         <div class="page-wrapper my-wrapper">
-          <QcDetails blur={blur} setBlur={setBlur} />
+          
+          <QcDetails blur={blur} setBlur={setBlur} setImagePreview={setImagePreview} />
         </div>
       </div>
     </>

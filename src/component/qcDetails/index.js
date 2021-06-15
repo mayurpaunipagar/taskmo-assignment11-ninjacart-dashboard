@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import "./index.css";
 import { apexOptions } from "./apexOptions";
+import { IMAGES_BASE_URL } from "../../utils";
 
-export default function QcDetails({ blur, setBlur }) {
+export default function QcDetails({ blur, setBlur,setImagePreview }) {
+  const [api,setApi]=useState({})
   return (
     <div className="jio">
       <div className="jio_page">
@@ -110,7 +112,15 @@ export default function QcDetails({ blur, setBlur }) {
                           alt="aadhar front"
                           className="proof_image aadhar-img"
                           onClick={() => {
-                            setBlur(true);
+                            // setBlur(true);
+                            setImagePreview({
+                              status: true,
+                              url: `${
+                                Object.keys(api).length > 0
+                                  ? `${IMAGES_BASE_URL}/${api.shop_image_1}`
+                                  : window.location.origin + "/images/shop-front.svg"
+                              }`,
+                            });
                           }}
                         />
                       </div>
@@ -122,6 +132,17 @@ export default function QcDetails({ blur, setBlur }) {
                           src={window.location.origin + "/images/shop-left.svg"}
                           alt="aadhar front"
                           className="proof_image aadhar-img"
+                          onClick={() => {
+                            // setBlur(true);
+                            setImagePreview({
+                              status: true,
+                              url: `${
+                                Object.keys(api).length > 0
+                                  ? `${IMAGES_BASE_URL}/${api.shop_image_1}`
+                                  : window.location.origin + "/images/shop-left.svg"
+                              }`,
+                            });
+                          }}
                         />
                       </div>
                     </div>
@@ -134,6 +155,17 @@ export default function QcDetails({ blur, setBlur }) {
                           }
                           alt="aadhar front"
                           className="proof_image aadhar-img"
+                          onClick={() => {
+                            // setBlur(true);
+                            setImagePreview({
+                              status: true,
+                              url: `${
+                                Object.keys(api).length > 0
+                                  ? `${IMAGES_BASE_URL}/${api.shop_image_2}`
+                                  : window.location.origin + "/images/shop-right.svg"
+                              }`,
+                            });
+                          }}
                         />
                       </div>
                     </div>
@@ -209,6 +241,17 @@ export default function QcDetails({ blur, setBlur }) {
                           }
                           alt="aadhar front"
                           className="proof_image aadhar-img"
+                          onClick={() => {
+                            // setBlur(true);
+                            setImagePreview({
+                              status: true,
+                              url: `${
+                                Object.keys(api).length > 0
+                                  ? `${IMAGES_BASE_URL}/${api.shop_image_1}`
+                                  : window.location.origin + "/images/aadhar-front.svg"
+                              }`,
+                            });
+                          }}
                         />
                       </div>
                     </div>
@@ -221,6 +264,17 @@ export default function QcDetails({ blur, setBlur }) {
                           }
                           alt="aadhar front"
                           className="proof_image aadhar-img"
+                          onClick={() => {
+                            // setBlur(true);
+                            setImagePreview({
+                              status: true,
+                              url: `${
+                                Object.keys(api).length > 0
+                                  ? `${IMAGES_BASE_URL}/${api.shop_image_1}`
+                                  : window.location.origin + "/images/aadhar-back.svg"
+                              }`,
+                            });
+                          }}
                         />
                       </div>
                     </div>
@@ -260,6 +314,17 @@ export default function QcDetails({ blur, setBlur }) {
                             }
                             alt="call"
                             className="proof_image"
+                            onClick={() => {
+                              // setBlur(true);
+                              setImagePreview({
+                                status: true,
+                                url: `${
+                                  Object.keys(api).length > 0
+                                    ? `${IMAGES_BASE_URL}/${api.shop_image_1}`
+                                    : window.location.origin + "/images/profile-verification.svg"
+                                }`,
+                              });
+                            }}
                           />
                         </div>
                       </div>
