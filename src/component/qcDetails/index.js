@@ -8,15 +8,17 @@ export default function QcDetails() {
     <div className="jio">
       <div className="jio_page">
         <div className="jio_row1">
-          <div className="j_row1">JIO-MART quality check dashboard</div>
-          <div className="j_row2">
-            <p className="jio_p1">Back</p>
+          <div className="j_row1">Ninja-Cart </div>
+          <div className="j_row2 j-row-back-btn">
+            <img src={window.location.origin+"/images/back.svg"} alt="back button"/>
+            <div className="j-back-text">Back</div>
+            {/* <p className="jio_p1">Back</p> */}
           </div>
         </div>
         <div className="jio_row1">
           <div className="jio_row2">
             <div className="jio_box">
-              <p className="j_p1">Leade ID:</p>
+              <p className="j_p1">Lead ID:</p>
               <p className="j_p2">1256</p>
             </div>
           </div>
@@ -26,10 +28,10 @@ export default function QcDetails() {
                 <p className="j_p3">Merchant contact number</p>
                 <p className="j_p4">XXXXXXXX01</p>
               </div>
-              <div className="j_box2">
+              <div className="j_box2 my-call-row">
                 <p className="j_p5">CALL</p>
                 <img
-                  src={window.location.origin + "/callWhite.png"}
+                  src={window.location.origin + "/images/call.svg"}
                   alt="call"
                   className="call_home"
                 />
@@ -40,10 +42,10 @@ export default function QcDetails() {
                 <p className="j_p3">FSE contact number</p>
                 <p className="j_p4">XXXXXXXX02</p>
               </div>
-              <div className="j_box2">
+              <div className="j_box2 my-call-row">
                 <p className="j_p5">CALL</p>
                 <img
-                  src={window.location.origin + "/callWhite.png"}
+                  src={window.location.origin + "/images/call.svg"}
                   alt="call"
                   className="call_home"
                 />
