@@ -4,8 +4,14 @@ import "./index.css";
 import { apexOptions } from "./apexOptions";
 import { IMAGES_BASE_URL, NINJACART_LEAD_FIELDS_URL } from "../../utils";
 
-export default function QcDetails({ blur, setBlur, setImagePreview,setQcDoneMessage }) {
-  const [leadId,setLeadId]=useState(31);
+export default function QcDetails({
+  blur,
+  setBlur,
+  setImagePreview,
+  setQcDoneMessage,
+}) {
+  const [comment, setComment] = useState("");
+  const [leadId, setLeadId] = useState(31);
   const [api, setApi] = useState({});
   const [fakeOnBoarding, setFakeOnBoarding] = useState(false);
   const [qcScore, setQcScore] = useState(0);
@@ -54,18 +60,18 @@ export default function QcDetails({ blur, setBlur, setImagePreview,setQcDoneMess
     }
   };
 
-  const approveFunc=()=>{
+  const approveFunc = () => {
     setBlur(true);
     setQcDoneMessage("Approved");
-  }
-  const rejectFunc=()=>{
+  };
+  const rejectFunc = () => {
     setBlur(true);
     setQcDoneMessage("Rejected");
-  }
-  const redoFunc=()=>{
+  };
+  const redoFunc = () => {
     setBlur(true);
     setQcDoneMessage("Redo");
-  }
+  };
   useEffect(() => {
     setTotalCount(Object.keys(yesBtnObj).length);
     // getLeadDetails();
@@ -526,12 +532,16 @@ export default function QcDetails({ blur, setBlur, setImagePreview,setQcDoneMess
                   <></>
                 ) : (
                   <>
-                    <div className="j_p8 comment-container" >
+                    <div className="j_p8 comment-container">
                       <p className="j_p7">Comment</p>
 
-                      <textarea className={`comment`} placeholder="Enter comment here" > 
-                        
-                      </textarea>
+                      <textarea
+                        className={`comment1`}
+                        placeholder="Enter comment here"
+                        onChange={(e) => {
+                          setComment(e.target.value.trim());
+                        }}
+                      />
                     </div>
                     <div className="jio_check">
                       <label className="form-check-label" for="check2">
@@ -541,6 +551,10 @@ export default function QcDetails({ blur, setBlur, setImagePreview,setQcDoneMess
                           id="check2"
                           name="option2"
                           value="something"
+                          onChange={(e) => {
+                            console.log(e.target.checked);
+                            setFakeOnBoarding(e.target.checked);
+                          }}
                         />
                         <p className="j_p16">Mark this as face onboarding</p>
                       </label>
@@ -559,8 +573,30 @@ export default function QcDetails({ blur, setBlur, setImagePreview,setQcDoneMess
                     disabled={qcScore !== 100 || fakeOnBoarding}
                     onClick={approveFunc}
                   />
-                  <input type="button" className="j_button" value="Reject" onClick={rejectFunc}/>
-                  <input type="button" className="j_button" value="Redo" onClick={redoFunc} />
+                  <input
+                    type="button"
+                    className={`qcScoreBtn j_button ${
+                      qcScore < 100 && comment.trim().length > 0
+                        ? "activateQcScoreBtn"
+                        : ""
+                    }`}
+                    value="Reject"
+                    onClick={rejectFunc}
+                    disabled={qcScore === 100 || comment.trim().length === 0}
+                  />
+                  <input
+                    type="button"
+                    className={`qcScoreBtn j_button ${
+                      qcScore < 100 && !fakeOnBoarding && !(comment.trim().length === 0)
+                        ? "activateQcScoreBtn"
+                        : ""
+                    }`}
+                    value="Redo"
+                    disabled={
+                      qcScore === 100 || comment.trim().length === 0 || fakeOnBoarding
+                    }
+                    onClick={redoFunc}
+                  />
                 </div>
               </div>
             </div>
