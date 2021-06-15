@@ -395,3 +395,7 @@ color: #876bf5 - header
   .aadhar-img{
     height: 150px !important;
   }
+
+  .my-shop-image{
+    border: none !important;
+  }

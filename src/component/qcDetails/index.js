@@ -100,13 +100,10 @@ export default function QcDetails() {
                     <div className="j_col1">
                       <p className="j_p11">Shop image</p>
                       <div className="j_col2">
-                        <div className="j_dotted">
+                        <div className="j_dotted my-shop-image">
                           <img
-                            src={
-                              window.location.origin +
-                              "/Adhaar/Mask Group 87.svg"
-                            }
-                            alt="call"
+                            src={window.location.origin + "/images/shop-front.svg"}
+                            alt="shop-image"
                             className="proof_image"
                           />
                         </div>
@@ -117,8 +114,8 @@ export default function QcDetails() {
                       <div className="j_col2">
                         <div className="j_dotted">
                           <img
-                            src={window.location.origin + "/invoice.png"}
-                            alt="call"
+                            src={window.location.origin + "/images/doc.svg"}
+                            alt="proof of business"
                             className="proof_image"
                           />
                         </div>
@@ -207,8 +204,8 @@ export default function QcDetails() {
               </div>
               <div className="j_row4">
                 <div className="j_proof">
-                  <p className="j_p9">Profile image</p>
-                  <p className="j_p14">Customer profile image</p>
+                  <p className="j_p9">Verification Screeshot</p>
+                  <p className="j_p14">Profile Verification Screenshot</p>
                   <div className="j_row8">
                     <div className="j_col1">
                       <div className="j_col2">
