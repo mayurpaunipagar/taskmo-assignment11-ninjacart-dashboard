@@ -5,6 +5,7 @@ import { apexOptions } from "./apexOptions";
 import { IMAGES_BASE_URL, NINJACART_LEAD_FIELDS_URL } from "../../utils";
 
 export default function QcDetails({ blur, setBlur, setImagePreview,setQcDoneMessage }) {
+  const [leadId,setLeadId]=useState(31);
   const [api, setApi] = useState({});
   const [fakeOnBoarding, setFakeOnBoarding] = useState(false);
   const [qcScore, setQcScore] = useState(0);
@@ -525,15 +526,12 @@ export default function QcDetails({ blur, setBlur, setImagePreview,setQcDoneMess
                   <></>
                 ) : (
                   <>
-                    <div className="j_p8" style={{ opacity: "0.3" }}>
+                    <div className="j_p8 comment-container" >
                       <p className="j_p7">Comment</p>
 
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Cupiditate earum eius, quo libero a quod quis maiores
-                        quos beatae. Rem accusamus, ipsam architecto similique
-                        nam quas mollitia nemo suscipit explicabo.
-                      </p>
+                      <textarea className={`comment`} placeholder="Enter comment here" > 
+                        
+                      </textarea>
                     </div>
                     <div className="jio_check">
                       <label className="form-check-label" for="check2">

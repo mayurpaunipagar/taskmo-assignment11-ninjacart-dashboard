@@ -291,7 +291,7 @@ p.j_p6 {
 }
 
 .j_p7 {
-  border: 1px solid lightgray;
+  border: 1px solid rgb(197, 197, 197);
   padding: 4px;
   border-radius: 6px;
   width: 125px;
@@ -303,11 +303,11 @@ p.j_p6 {
   margin-left: 22px;
   margin-top: -30px;
   background: #fff;
-  z-index: 2;
+  z-index: 3;
 }
 .j_p8 {
   font-size: 12px;
-  border: 1px solid lightgray;
+  border: 1px solid rgb(197, 197, 197);
   border-radius: 10px;
   padding: 16px;
   background: #f8f8f8;
@@ -411,3 +411,10 @@ input.j_button {
   background: #876bf5;
   color:  white;
 } */
+.comment{
+  width:100%;
+  min-height: 100px;
+}
+.comment-container{
+  color:black;
+}
