@@ -19,7 +19,7 @@ export default function QcDetails({
 }) {
   const [remarkApi,setRemarkApi]=useState([]);
   const [comment, setComment] = useState("");
-  const [leadId, setLeadId] = useState(60);
+  const [leadId, setLeadId] = useState(31);
   const [api, setApi] = useState({});
   const [fakeOnBoarding, setFakeOnBoarding] = useState(false);
   const [qcScore, setQcScore] = useState(0);
@@ -655,7 +655,7 @@ export default function QcDetails({
                       />
                     </div>
                     <div className="jio_check">
-                      <label className="form-check-label" for="check2">
+                      <label className="form-check-label" htmlFor="check2">
                         <input
                           type="checkbox"
                           className="form-check-input"
@@ -667,7 +667,7 @@ export default function QcDetails({
                             setFakeOnBoarding(e.target.checked);
                           }}
                         />
-                        <p className="j_p16">Mark this as face onboarding</p>
+                        <p className="j_p16">Fake onboarding</p>
                       </label>
                     </div>
                   </>

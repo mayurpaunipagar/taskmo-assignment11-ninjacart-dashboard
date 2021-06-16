@@ -416,6 +416,12 @@ input.j_button {
   min-height: 100px;
   border:1px solid rgb(197, 197, 197);
   padding:10px;
+  background-color: #f8f8f8;
+  border: none;
+}
+.comment1:focus{
+  border:none;
+  outline:none;
 }
 
 .comment-container{
