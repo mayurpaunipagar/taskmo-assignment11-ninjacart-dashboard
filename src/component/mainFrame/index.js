@@ -1,6 +1,7 @@
 import "./style.css";
 import SideBarContent from "../sidebarContent";
 import QcDetails from "./../qcDetails";
+import { Route} from "react-router-dom";
 export default function MainFrame({
   blur,
   setBlur,
@@ -14,12 +15,15 @@ export default function MainFrame({
           <SideBarContent />
         </div>
         <div className={`page-wrapper my-wrapper ${blur ? "myBlur" : ""}`}>
-          <QcDetails
-            blur={blur}
-            setBlur={setBlur}
-            setImagePreview={setImagePreview}
-            setQcDoneMessage={setQcDoneMessage}
-          />
+          <Route path="/qc-details">
+            <QcDetails
+              blur={blur}
+              setBlur={setBlur}
+              setImagePreview={setImagePreview}
+              setQcDoneMessage={setQcDoneMessage}
+            />
+          </Route>
+          <Route path="/dashboard">I am dashboard</Route>
         </div>
       </div>
     </>

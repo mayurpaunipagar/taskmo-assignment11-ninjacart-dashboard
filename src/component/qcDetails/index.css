@@ -455,3 +455,6 @@ input.j_button {
 .pvs-text{
   margin:0px 10px;
 }
+.j-back-text,.point{
+  cursor:pointer
+}

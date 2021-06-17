@@ -10,6 +10,7 @@ import {
   NINJACART_APPROVE_URL,
   NINJACART_QC_REMARKS_URL,
 } from "../../utils";
+import { useHistory } from "react-router-dom";
 
 export default function QcDetails({
   blur,
@@ -17,6 +18,7 @@ export default function QcDetails({
   setImagePreview,
   setQcDoneMessage,
 }) {
+  const history=useHistory();
   const [remarkApi, setRemarkApi] = useState([]);
   const [comment, setComment] = useState("");
   const [leadId, setLeadId] = useState(31);
@@ -30,6 +32,9 @@ export default function QcDetails({
     aadhar: "none",
   }); //yes no none
 
+  const routeToDashboard=()=>{
+    history.push("/dashboard");
+  }
   const updateScore = (e) => {
     const label = e.target.dataset.label;
     const value = e.target.innerText;
@@ -193,10 +198,11 @@ export default function QcDetails({
       <div className="jio_page">
         <div className="jio_row1">
           <div className="j_row1">Ninja-Cart </div>
-          <div className="j_row2 j-row-back-btn">
+          <div className="j_row2 j-row-back-btn" onClick={routeToDashboard}>
             <img
               src={window.location.origin + "/images/back.svg"}
               alt="back button"
+              className={"point"}
             />
             <div className="j-back-text">Back</div>
             {/* <p className="jio_p1">Back</p> */}

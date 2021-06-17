@@ -9,9 +9,6 @@ export default function SideBarContent() {
           src={window.location.origin + "/taskmoLogo.svg"}
           alt={"logo"}
           className="logoImg"
-          onClick={()=>{
-            history.push("/main/redo");
-          }}
         />
         <div className="QCText">Quality Check</div>
         <div className="dbText">Dashboard</div>
