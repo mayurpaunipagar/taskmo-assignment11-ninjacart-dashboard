@@ -8,7 +8,7 @@ import {
   NINJACART_REJECT_URL,
   NINJACART_REDO_URL,
   NINJACART_APPROVE_URL,
-  NINJACART_QC_REMARKS_URL
+  NINJACART_QC_REMARKS_URL,
 } from "../../utils";
 
 export default function QcDetails({
@@ -17,7 +17,7 @@ export default function QcDetails({
   setImagePreview,
   setQcDoneMessage,
 }) {
-  const [remarkApi,setRemarkApi]=useState([]);
+  const [remarkApi, setRemarkApi] = useState([]);
   const [comment, setComment] = useState("");
   const [leadId, setLeadId] = useState(31);
   const [api, setApi] = useState({});
@@ -213,7 +213,11 @@ export default function QcDetails({
             <div className="j_row3">
               <div className="j_box1">
                 <p className="j_p3">Merchant contact number</p>
-                <p className="j_p4">{Object.keys(api).length>0?`XXXXXXX${api.merchant_number.substring(7,10)}`:"XXXXXXXX01"}</p>
+                <p className="j_p4">
+                  {Object.keys(api).length > 0
+                    ? `XXXXXXX${api.merchant_number.substring(7, 10)}`
+                    : "XXXXXXXX01"}
+                </p>
               </div>
               <div className="j_box2 my-call-row">
                 <p className="j_p5">CALL</p>
@@ -227,7 +231,11 @@ export default function QcDetails({
             <div className="j_row3">
               <div className="j_box1">
                 <p className="j_p3">FSE contact number</p>
-                <p className="j_p4">XXXXXXXX02</p>
+                <p className="j_p4">
+                  {Object.keys(api).length > 0
+                    ? `XXXXXXX${api.fse_contact_number.substring(7, 10)}`
+                    : "XXXXXXXX01"}
+                </p>
               </div>
               <div className="j_box2 my-call-row">
                 <p className="j_p5">CALL</p>
@@ -245,7 +253,11 @@ export default function QcDetails({
                 <div className="j_row3">
                   <div className="j_box3">
                     <p className="j_p9">Shop name</p>
-                    <p className="j_p15">Shop name</p>
+                    <p className="j_p15">
+                      {Object.keys(api).length > 0
+                        ? api.shop_name
+                        : "Shop Name"}
+                    </p>
                   </div>
                   <div className="j_boxes">
                     <p
@@ -282,8 +294,7 @@ export default function QcDetails({
                 <div className="row_note1">
                   <p className="note_name">note:</p>
                   <p className="note_stats">
-                    Check and match the shop name with proof of business and
-                    shop image
+                    Check and match the shop name with shop image
                   </p>
                 </div>
               </div>
@@ -291,7 +302,9 @@ export default function QcDetails({
                 <div className="j_row5">
                   <div className="j_box3">
                     <p className="j_p9">Category</p>
-                    <p className="j_p15">Provision store/others</p>
+                    <p className="j_p15">
+                      {Object.keys(api).length > 0 ? api.category : "Category"}
+                    </p>
                   </div>
                   <div className="j_boxes">
                     <p
@@ -329,8 +342,7 @@ export default function QcDetails({
                 <div className="row_note1">
                   <p className="note_name">note:</p>
                   <p className="note_stats">
-                    Check is this category is matching with the uploaded proof
-                    of business image
+                    Check is this category is matching with the shop image
                   </p>
                 </div>
               </div>
@@ -343,21 +355,25 @@ export default function QcDetails({
                       {/* <p className="j_p11">Aadhar front image</p> */}
                       <div className="j_col2 aadhar-container">
                         <img
-                          src={
-                            window.location.origin + "/images/shop-front.svg"
-                          }
-                          alt="aadhar front"
+                          src={`${
+                            Object.keys(api).length > 0
+                              ? `${IMAGES_BASE_URL}/${api.shop_image_1}`
+                              : window.location.origin +
+                                "/images/shop-front.svg"
+                          }`}
+                          alt="shop front"
                           className="proof_image aadhar-img"
-                          onClick={() => {
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src =
+                              window.location.origin +
+                              "/images/shop-front.svg";
+                          }}
+                          onClick={(e) => {
                             // setBlur(true);
                             setImagePreview({
                               status: true,
-                              url: `${
-                                Object.keys(api).length > 0
-                                  ? `${IMAGES_BASE_URL}/${api.shop_image_1}`
-                                  : window.location.origin +
-                                    "/images/shop-front.svg"
-                              }`,
+                              url: e.target.src,
                             });
                           }}
                         />
@@ -367,19 +383,24 @@ export default function QcDetails({
                       {/* <p className="j_p11">Aadhar back image</p> */}
                       <div className="j_col2 aadhar-container">
                         <img
-                          src={window.location.origin + "/images/shop-left.svg"}
-                          alt="aadhar front"
+                          src={`${
+                            Object.keys(api).length > 0
+                              ? `${IMAGES_BASE_URL}/${api.shop_image_2}`
+                              : window.location.origin + "/images/shop-left.svg"
+                          }`}
+                          alt="shop left"
                           className="proof_image aadhar-img"
-                          onClick={() => {
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src =
+                              window.location.origin +
+                              "/images/shop-left.svg";
+                          }}
+                          onClick={(e) => {
                             // setBlur(true);
                             setImagePreview({
                               status: true,
-                              url: `${
-                                Object.keys(api).length > 0
-                                  ? `${IMAGES_BASE_URL}/${api.shop_image_1}`
-                                  : window.location.origin +
-                                    "/images/shop-left.svg"
-                              }`,
+                              url: e.target.src,
                             });
                           }}
                         />
@@ -389,21 +410,25 @@ export default function QcDetails({
                       {/* <p className="j_p11">Aadhar back image</p> */}
                       <div className="j_col2 aadhar-container">
                         <img
-                          src={
-                            window.location.origin + "/images/shop-right.svg"
-                          }
-                          alt="aadhar front"
+                          src={`${
+                            Object.keys(api).length > 0
+                              ? `${IMAGES_BASE_URL}/${api.shop_image_3}`
+                              : window.location.origin +
+                                "/images/shop-right.svg"
+                          }`}
+                          alt="shop right"
                           className="proof_image aadhar-img"
-                          onClick={() => {
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src =
+                              window.location.origin +
+                              "/images/shop-right.svg";
+                          }}
+                          onClick={(e) => {
                             // setBlur(true);
                             setImagePreview({
                               status: true,
-                              url: `${
-                                Object.keys(api).length > 0
-                                  ? `${IMAGES_BASE_URL}/${api.shop_image_2}`
-                                  : window.location.origin +
-                                    "/images/shop-right.svg"
-                              }`,
+                              url: e.target.src,
                             });
                           }}
                         />
@@ -453,7 +478,11 @@ export default function QcDetails({
                 <div className="j_row5">
                   <div className="j_box3">
                     <p className="j_p9">Merchant aadhar number</p>
-                    <p className="j_p10">1224 5678 9900</p>
+                    <p className="j_p10">
+                      {Object.keys(api).length > 0
+                        ? api.aadhar_number
+                        : "xxxxxxxxxxxx"}
+                    </p>
                   </div>
                   <div className="j_boxes">
                     <p
@@ -506,21 +535,25 @@ export default function QcDetails({
                       <p className="j_p11">Aadhar front image</p>
                       <div className="j_col2 aadhar-container">
                         <img
-                          src={
-                            window.location.origin + "/images/aadhar-front.svg"
-                          }
+                          src={`${
+                            Object.keys(api).length > 0
+                              ? `${IMAGES_BASE_URL}/${api.aadhar_front_image}`
+                              : window.location.origin +
+                                "/images/aadhar-front.svg"
+                          }`}
                           alt="aadhar front"
                           className="proof_image aadhar-img"
-                          onClick={() => {
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src =
+                              window.location.origin +
+                              "/images/aadhar-front.svg";
+                          }}
+                          onClick={(e) => {
                             // setBlur(true);
                             setImagePreview({
                               status: true,
-                              url: `${
-                                Object.keys(api).length > 0
-                                  ? `${IMAGES_BASE_URL}/${api.shop_image_1}`
-                                  : window.location.origin +
-                                    "/images/aadhar-front.svg"
-                              }`,
+                              url: e.target.src,
                             });
                           }}
                         />
@@ -530,21 +563,25 @@ export default function QcDetails({
                       <p className="j_p11">Aadhar back image</p>
                       <div className="j_col2 aadhar-container">
                         <img
-                          src={
-                            window.location.origin + "/images/aadhar-back.svg"
-                          }
-                          alt="aadhar front"
+                          src={`${
+                            Object.keys(api).length > 0
+                              ? `${IMAGES_BASE_URL}/${api.aadhar_back_image}`
+                              : window.location.origin +
+                                "/images/aadhar-back.svg"
+                          }`}
+                          alt="aadhar back"
                           className="proof_image aadhar-img"
-                          onClick={() => {
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src =
+                              window.location.origin +
+                              "/images/aadhar-back.svg";
+                          }}
+                          onClick={(e) => {
                             // setBlur(true);
                             setImagePreview({
                               status: true,
-                              url: `${
-                                Object.keys(api).length > 0
-                                  ? `${IMAGES_BASE_URL}/${api.shop_image_1}`
-                                  : window.location.origin +
-                                    "/images/aadhar-back.svg"
-                              }`,
+                              url: e.target.src,
                             });
                           }}
                         />
@@ -580,21 +617,26 @@ export default function QcDetails({
                       <div className="j_col2">
                         <div className="j_dotted my-shop-image">
                           <img
-                            src={
-                              window.location.origin +
-                              "/images/profile-verification.svg"
-                            }
-                            alt="call"
+                            src={`${
+                              Object.keys(api).length > 0
+                                ? `${IMAGES_BASE_URL}/${api.profile_verification_image}`
+                                : window.location.origin +
+                                  "/images/profile-verification.svg"
+                            }`}
+                            alt="profile verfication"
                             className="proof_image"
-                            onClick={() => {
+                            onError={(e) => {
+                              e.target.onerror = null;
+                              e.target.src =
+                                window.location.origin +
+                                "/images/profile-verification.svg";
+                            }}
+                            onClick={(e) => {
                               // setBlur(true);
                               setImagePreview({
                                 status: true,
                                 url: `${
-                                  Object.keys(api).length > 0
-                                    ? `${IMAGES_BASE_URL}/${api.shop_image_1}`
-                                    : window.location.origin +
-                                      "/images/profile-verification.svg"
+                                  e.target.src
                                 }`,
                               });
                             }}
