@@ -219,16 +219,14 @@ export default function QcDetails({
                     : "XXXXXXXX01"}
                 </p>
               </div>
-              
-                    <div className="call-container">
-                    <img
+
+              <div className="call-container">
+                <img
                   src={window.location.origin + "/images/call.svg"}
                   alt="call"
                   className="call_home"
                 />
-                    </div>
-                
-              
+              </div>
             </div>
             <div className="j_row3">
               <div className="j_box1">
@@ -239,15 +237,13 @@ export default function QcDetails({
                     : "XXXXXXXX01"}
                 </p>
               </div>
-                <div className="call-container">
+              <div className="call-container">
                 <img
                   src={window.location.origin + "/images/call.svg"}
                   alt="call"
                   className="call_home"
                 />
-                </div>
-                
-              
+              </div>
             </div>
           </div>
           <div className="jio_row4">
@@ -369,8 +365,7 @@ export default function QcDetails({
                           onError={(e) => {
                             e.target.onerror = null;
                             e.target.src =
-                              window.location.origin +
-                              "/images/shop-front.svg";
+                              window.location.origin + "/images/shop-front.svg";
                           }}
                           onClick={(e) => {
                             // setBlur(true);
@@ -396,8 +391,7 @@ export default function QcDetails({
                           onError={(e) => {
                             e.target.onerror = null;
                             e.target.src =
-                              window.location.origin +
-                              "/images/shop-left.svg";
+                              window.location.origin + "/images/shop-left.svg";
                           }}
                           onClick={(e) => {
                             // setBlur(true);
@@ -424,8 +418,7 @@ export default function QcDetails({
                           onError={(e) => {
                             e.target.onerror = null;
                             e.target.src =
-                              window.location.origin +
-                              "/images/shop-right.svg";
+                              window.location.origin + "/images/shop-right.svg";
                           }}
                           onClick={(e) => {
                             // setBlur(true);
@@ -638,9 +631,7 @@ export default function QcDetails({
                               // setBlur(true);
                               setImagePreview({
                                 status: true,
-                                url: `${
-                                  e.target.src
-                                }`,
+                                url: `${e.target.src}`,
                               });
                             }}
                           />
@@ -655,6 +646,22 @@ export default function QcDetails({
               <div className="jio_note">
                 <p className="j_p6">remarks</p>
                 <div className="j_p8">
+                  {remarkApi.length > 0 ? (
+                    <>
+                      {remarkApi.map(({ qc_remark }, idx) => {
+                        return (
+                          <>
+                            <div className="j_p8">
+                              <p className="j_p7">QC {idx+1}</p>
+                              <p>{qc_remark}</p>
+                            </div>
+                          </>
+                        );
+                      })}
+                    </>
+                  ) : (
+                    <>
+                    <div className="j_p8">
                   <p className="j_p7">QC 1(lead ID)</p>
 
                   <p>
@@ -674,6 +681,10 @@ export default function QcDetails({
                     mollitia nemo suscipit explicabo.
                   </p>
                 </div>
+                    </>
+                  )}
+                </div>
+                
               </div>
               <div className="jio_score">
                 {/* <p className="j_p6">score: </p> */}
