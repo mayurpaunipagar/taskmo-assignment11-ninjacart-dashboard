@@ -182,14 +182,18 @@ p.j_p15 {
 }
 
 p.j_yes {
-  width: 100%;
-  height: 40px;
-  margin: 12px;
+  width: 36%;
+  height: 33px;
+  margin: 5px;
+  font-size:11px;
   border: 1px solid #e077fb;
   border-radius: 5px;
-  text-align: center;
+  /* text-align: center; */
   /* color: #876bf5; */
-  padding: 7px;
+  /* padding: 7px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .j_button:hover,
 .j_yes:hover {
