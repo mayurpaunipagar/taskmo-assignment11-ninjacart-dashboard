@@ -606,8 +606,8 @@ export default function QcDetails({
               </div> */}
               <div className="j_row4">
                 <div className="j_proof">
-                  <p className="j_p9">Verification Screeshot</p>
-                  <p className="j_p14">Profile Verification Screenshot</p>
+                  {/* <p className="j_p9">Verification Screeshot</p> */}
+                  <p className="j_p14 pvs-text">Profile Verification Screenshot</p>
                   <div className="j_row8">
                     <div className="j_col1">
                       <div className="j_col2">
