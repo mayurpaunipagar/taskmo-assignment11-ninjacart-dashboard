@@ -49,7 +49,7 @@ p.jio_p1 {
   border: 1px solid lightgray;
   border-radius: 5px;
   display: flex;
-  max-width: 120px;
+  /* max-width: 120px; */
   padding: 5px;
   /* letter-spacing: 1px; */
 }
@@ -57,6 +57,7 @@ p.jio_p1 {
 .jio_row2 {
   margin-top: 30px;
   margin-left: 20px;
+  display: flex;
 }
 
 .jio_row3 {
@@ -64,15 +65,16 @@ p.jio_p1 {
   margin-top: 10px;
 }
 p.j_p1 {
-  font-size: 11px;
-  margin: auto;
-  font-weight: 600;
-  opacity: 0.7;
+  font-size: 9px;
+    margin: auto;
+    font-weight: 600;
+    opacity: 0.7;
+    margin-left: 6px;
 }
 
 p.j_p2 {
   color: #876bf5;
-  font-size: 16px;
+  font-size: 13px;
   margin: 0px;
   margin-left: 4px;
 }
@@ -83,7 +85,7 @@ p.j_p2 {
 }
 
 .j_row3 {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .j_box1 {
