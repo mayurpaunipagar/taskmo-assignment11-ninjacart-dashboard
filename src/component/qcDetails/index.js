@@ -219,14 +219,16 @@ export default function QcDetails({
                     : "XXXXXXXX01"}
                 </p>
               </div>
-              <div className="j_box2 my-call-row">
-                <p className="j_p5">CALL</p>
-                <img
+              
+                    <div className="call-container">
+                    <img
                   src={window.location.origin + "/images/call.svg"}
                   alt="call"
                   className="call_home"
                 />
-              </div>
+                    </div>
+                
+              
             </div>
             <div className="j_row3">
               <div className="j_box1">
@@ -237,14 +239,15 @@ export default function QcDetails({
                     : "XXXXXXXX01"}
                 </p>
               </div>
-              <div className="j_box2 my-call-row">
-                <p className="j_p5">CALL</p>
+                <div className="call-container">
                 <img
                   src={window.location.origin + "/images/call.svg"}
                   alt="call"
                   className="call_home"
                 />
-              </div>
+                </div>
+                
+              
             </div>
           </div>
           <div className="jio_row4">

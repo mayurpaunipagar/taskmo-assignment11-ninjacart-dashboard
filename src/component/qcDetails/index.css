@@ -81,7 +81,7 @@ p.j_p2 {
 .j_row3,
 .j_row5 {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .j_row3 {
@@ -121,8 +121,7 @@ p.j_p5 {
   text-transform: uppercase;
 }
 img.call_home {
-  width: 18px;
-  height: 18px;
+  width: 35px;  /* height: 18px; */
   /* margin-top: 13px; */
   margin-left: 7px;
 }
@@ -133,12 +132,15 @@ img.call_home {
 .j_row7 {
   display: flex;
   margin-top: 10px;
+  margin-top: 2px;
 }
 
 .j_boxes {
   display: flex;
-
-  width: 30%;
+  width: 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .jio_col1 {
@@ -183,8 +185,8 @@ p.j_p15 {
 }
 
 p.j_yes {
-  width: 36%;
-  height: 33px;
+  width: 34%;
+    height: 30px;
   margin: 5px;
   font-size:11px;
   border: 1px solid #e077fb;
@@ -441,4 +443,10 @@ input.j_button {
 .activateQcScoreBtn {
   color: black !important;
   border: 1px solid black !important;
+}
+.call-container{
+  margin-left:10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
