@@ -15,7 +15,7 @@ export default function SideBarContent() {
         <div
           className="homeText homeHover"
           onClick={() => {
-            history.push("/dashboard");
+            history.push("/home");
           }}
         >
           Home

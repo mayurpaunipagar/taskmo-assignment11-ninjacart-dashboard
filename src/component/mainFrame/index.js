@@ -2,6 +2,7 @@ import "./style.css";
 import SideBarContent from "../sidebarContent";
 import QcDetails from "./../qcDetails";
 import { Route} from "react-router-dom";
+import Home from "../home";
 export default function MainFrame({
   blur,
   setBlur,
@@ -23,7 +24,7 @@ export default function MainFrame({
               setQcDoneMessage={setQcDoneMessage}
             />
           </Route>
-          <Route path="/dashboard">I am dashboard</Route>
+          <Route path="/home"><Home/></Route>
         </div>
       </div>
     </>

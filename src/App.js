@@ -31,7 +31,8 @@ function App() {
                 ) : null}
                 <div
                   className={blur || imagePreview.status ? "disableClick" : ""}
-                >
+                > 
+                
                   <MainFrame
                     blur={blur}
                     setBlur={setBlur}
@@ -41,7 +42,10 @@ function App() {
                 </div>
               </>
             ) : (
+              <>
+              
               <Login setLoggedIn={setLoggedIn} />
+              </>
             )}
           </Route>
         </Switch>
