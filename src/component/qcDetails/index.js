@@ -198,7 +198,9 @@ export default function QcDetails({
       <div className="jio_page">
         <div className="jio_row1">
           <div className="j_row1">Ninja-Cart </div>
-          <div className="j_row2 j-row-back-btn" onClick={routeToDashboard}>
+          <div className="j_row2 j-row-back-btn" onClick={()=>{
+            history.push("/home");
+          }}>
             <img
               src={window.location.origin + "/images/back.svg"}
               alt="back button"

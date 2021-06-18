@@ -19,7 +19,8 @@ export default function Home() {
   ];
   const qcList=[
     {
-      lead_id:1
+      lead_id:1,
+
     },
     {
       lead_id:2
@@ -82,14 +83,14 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="dash_row2">
-                  <div className="dash_card2" style={{ background: "#f9993e" }}>
+                  <div className="dash_card2" style={{ backgroundImage: `url(${window.location.origin + "/images/total-lead.svg"})` }}>
                     <div className="dash_p3">
                       <p className="dash_per">+158</p>
                     </div>
                     <div className="dash_p2">236</div>
                     <div className="dash_p1">Total leads</div>
                   </div>
-                  <div className="dash_card2" style={{ background: "#f44771" }}>
+                  <div className="dash_card2" style={{ backgroundImage: `url(${window.location.origin + "/images/discrepancy-percentage.svg"})` }}>
                     <div className="dash_p3">
                       <p className="dash_per">+07%</p>
                     </div>
@@ -101,7 +102,9 @@ export default function Home() {
               </div>
             </div>
             {/* code from super hr template start */}
-            <div className="row my-table-style ">
+            <div className="row my-table-style " onClick={()=>{
+              history.push("/qc-details");
+            }}>
               
               <div className="col-lg-12  ">
               <div className="table-heading"> List of QC</div>
