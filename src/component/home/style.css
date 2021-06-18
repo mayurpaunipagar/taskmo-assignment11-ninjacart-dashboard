@@ -378,16 +378,31 @@
     font-size:12px;
     padding:5px 10px;
     border-radius: 5px;
+    min-width: 80px;
+    max-width:80px;
+    text-align:center;
+  }
+  .redo{
+    background-color: #FFC23B4D;
+    color:#F48D00;
+    font-size:12px;
+    padding:5px 10px;
+    border-radius: 5px;
+    min-width: 80px;
+    max-width:80px;
+    text-align: center;
   }
   .d-status{
     font-size:12px;
     text-align: center;
   }
   .d-true{
-    color:green;
+    color:#36A000;
+    font-size:13px;
   }
-  .false{
-    color:red;
+  .d-false{
+    color:#F83030;
+    font-size:14px;
   }
 
   .warn-icon{

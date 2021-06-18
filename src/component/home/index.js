@@ -1,5 +1,6 @@
 import { useHistory } from "react-router-dom";
 import "./style.css";
+import {qcList} from "./../../dataset/qcHome";
 import ReactApexChart from "react-apexcharts";
 import { optionsDonut } from "./optionsDonut";
 export default function Home() {
@@ -17,27 +18,7 @@ export default function Home() {
     "QC status",
     "Discrepancy status",
   ];
-  const qcList=[
-    {
-      lead_id:1,
-
-    },
-    {
-      lead_id:2
-    },
-    {
-      lead_id:3
-    },
-    {
-      lead_id:4
-    },
-    {
-      lead_id:5
-    },
-    {
-      lead_id:6
-    }
-  ];
+  
   return (
     <>
       <div className="jio">
@@ -121,21 +102,21 @@ export default function Home() {
                     </thead>
                     <tbody>
                       {
-                        qcList.map(({lead_id},idx)=>{
+                        qcList.map(({lead_id,program,program_id,lead_date,lead_time,qc_date,qc_time,location,redoCount,qc_status,d_status},idx)=>{
                             return <>
                                 <tr key={idx} className="my-tr-style">
                         <td className="lead-id-value my-td-style">{lead_id}</td>
                         <td className="my-td-style" ><div className="project-details-container">
-                          <div className="project-details-value1">{"Kirana Partner Program"}</div>
-                          <div className="project-details-value2">{"11247"}</div>
+                          <div className="project-details-value1">{program}</div>
+                          <div className="project-details-value2">{program_id}</div>
                           </div></td>
                         <td className="my-td-style"><div className="my-col-center">
-                          <div className="date-style">{"06/June/2021"}</div><div className="time-style">{"09:30 am"}</div></div></td>
-                        <td className="my-td-style"><div className="my-col-center"><div className="qc-detail-date-value">{"10/June/2021"}</div><div className="qc-detail-time-value">{"11:30 am"}</div></div></td>
-                        <td className="location my-td-style">{"Bangalore"}</td>
-                        <td className="redo-count my-td-style">{"013"}</td>
-                        <td className="my-td-style"><div className="my-col-center"><div className="approved">{"Approved"}</div></div></td>
-                        <td className="d-status d-true my-td-style">{"True"}</td>
+                          <div className="date-style">{lead_date}</div><div className="time-style">{lead_time}</div></div></td>
+                        <td className="my-td-style"><div className="my-col-center"><div className="qc-detail-date-value">{qc_date}</div><div className="qc-detail-time-value">{qc_time}</div></div></td>
+                        <td className="location my-td-style">{location}</td>
+                        <td className="redo-count my-td-style">{redoCount}</td>
+                        <td className="my-td-style"><div className="my-col-center"><div className={`${qc_status==="Approved"?"approved":"redo"}`}>{qc_status}</div></div></td>
+                        <td className={`d-status ${d_status?"d-true":"d-false"} my-td-style`}>{d_status?"True":"False"}</td>
                         <td className="my-td-style"><div className="my-col-center"><img className="warn-icon" src={window.location.origin+"/images/noun_Warning.svg"} alt="warn icon"/></div></td>
                         
                       </tr>
