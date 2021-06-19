@@ -39,14 +39,14 @@ export default function Home() {
           <div className="home-jio_row1">
             <div className="dash_card">
               <div className="dash_col1">
-                <div id="basicDoughnut" style={{ height: "100px" }}></div>
-                {/* <ReactApexChart
+                {/* <div id="basicDoughnut" style={{ height: "100px" }}></div> */}
+                <ReactApexChart
                 options={optionsDonut}
                 series={optionsDonut.series}
                 type="donut"
-                width="320px"
-                height="500px"
-              /> */}
+                width="300px"
+                // height="500px"
+              />
               </div>
               <div className="dash_col2">
                 <div className="dash_row2">
