@@ -5,9 +5,6 @@ import ReactApexChart from "react-apexcharts";
 import { optionsDonut } from "./optionsDonut";
 export default function Home() {
   const history = useHistory();
-  const routeToDashboard = () => {
-    history.push("/home");
-  };
   const tableThArr=[
     "Lead Id",
     "Project Details",
@@ -25,7 +22,9 @@ export default function Home() {
         <div className="jio_page home-jio_page">
           <div className="jio_row1">
             <div className="j_row1">Ninja-Cart </div>
-            <div className="j_row2 j-row-back-btn " onClick={routeToDashboard}>
+            <div className="j_row2 j-row-back-btn " onClick={()=>{
+              history.push("/home");
+            }}>
               <img
                 src={window.location.origin + "/images/back.svg"}
                 alt="back button"

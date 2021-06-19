@@ -4,7 +4,7 @@ import Login from "./component/login";
 import MainFrame from "./component/mainFrame";
 import ImagePreview from "./component/imagePreview";
 import { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router,Redirect, Switch, Route, Link } from "react-router-dom";
 import QcCheckDone from "./component/qcCheckDone";
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -19,7 +19,8 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/">
+          <Route path="/" >
+          <Redirect to="/home" />
             {loggedIn ? (
               <>
                 {blur ? <QcCheckDone blur={blur} setBlur={setBlur} message={qcDoneMessage} /> : null}
