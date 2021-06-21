@@ -85,9 +85,16 @@
   }
   
   .dash_col1 {
+    margin-top: -30px;
+    /* height: 36%; */
     width: 35%;
     align-self: center;
-    contain: content;
+    /* contain: content; */
+    /* z-index: 1004; */
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   .dash_col2 {
@@ -139,6 +146,7 @@
     align-items: flex-start;
     flex-direction: column;
     padding-left: 18px;
+    background-repeat: no-repeat;
   }
   
   .dash_p1 {
@@ -421,4 +429,8 @@
 }
 .my-td-style{
   padding: 10px;
+}
+
+@media (max-width:940px){
+  
 }
