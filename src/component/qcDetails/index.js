@@ -18,10 +18,10 @@ export default function QcDetails({
   setImagePreview,
   setQcDoneMessage,
 }) {
-  const history=useHistory();
+  const history = useHistory();
   const [remarkApi, setRemarkApi] = useState([]);
   const [comment, setComment] = useState("");
-  const [leadId, setLeadId] = useState(31);
+  const [leadId, setLeadId] = useState(185);
   const [api, setApi] = useState({});
   const [fakeOnBoarding, setFakeOnBoarding] = useState(false);
   const [qcScore, setQcScore] = useState(0);
@@ -32,9 +32,9 @@ export default function QcDetails({
     aadhar: "none",
   }); //yes no none
 
-  const routeToDashboard=()=>{
+  const routeToDashboard = () => {
     history.push("/dashboard");
-  }
+  };
   const updateScore = (e) => {
     const label = e.target.dataset.label;
     const value = e.target.innerText;
@@ -198,9 +198,12 @@ export default function QcDetails({
       <div className="jio_page">
         <div className="jio_row1">
           <div className="j_row1">Ninja-Cart </div>
-          <div className="j_row2 j-row-back-btn" onClick={()=>{
-            history.push("/home");
-          }}>
+          <div
+            className="j_row2 j-row-back-btn"
+            onClick={() => {
+              history.push("/home");
+            }}
+          >
             <img
               src={window.location.origin + "/images/back.svg"}
               alt="back button"
@@ -615,7 +618,9 @@ export default function QcDetails({
               <div className="j_row4">
                 <div className="j_proof">
                   {/* <p className="j_p9">Verification Screeshot</p> */}
-                  <p className="j_p14 pvs-text">Profile Verification Screenshot</p>
+                  <p className="j_p14 pvs-text">
+                    Profile Verification Screenshot
+                  </p>
                   <div className="j_row8">
                     <div className="j_col1">
                       <div className="j_col2">
@@ -660,7 +665,7 @@ export default function QcDetails({
                         return (
                           <>
                             <div className="j_p8">
-                              <p className="j_p7">QC {idx+1}</p>
+                              <p className="j_p7">QC {idx + 1}</p>
                               <p>{qc_remark}</p>
                             </div>
                           </>
@@ -669,30 +674,14 @@ export default function QcDetails({
                     </>
                   ) : (
                     <>
-                    <div className="j_p8">
-                  <p className="j_p7">QC 1(lead ID)</p>
+                      {/* <div className="j_p8">
+                        <p className="j_p7">QC 1(lead ID)</p>
 
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Cupiditate earum eius, quo libero a quod quis maiores quos
-                    beatae. Rem accusamus, ipsam architecto similique nam quas
-                    mollitia nemo suscipit explicabo.
-                  </p>
-                </div>
-                <div className="j_p8">
-                  <p className="j_p7">QC 2(lead ID)</p>
-
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Cupiditate earum eius, quo libero a quod quis maiores quos
-                    beatae. Rem accusamus, ipsam architecto similique nam quas
-                    mollitia nemo suscipit explicabo.
-                  </p>
-                </div>
+                        <p></p>
+                      </div> */}
                     </>
                   )}
                 </div>
-                
               </div>
               <div className="jio_score">
                 {/* <p className="j_p6">score: </p> */}
